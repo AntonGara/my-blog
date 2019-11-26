@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<h2>{{ page.title }}</h2>
+
+{% include page-intro.html %}
+
+{{ content }}
+
+<section>
+
+  <h3>Services</h3>
+
+  <ul>
+    {% for service in site.services %}
+      <li>
+        <h4><a href="{{ service.url }}">{{ service.title }}</a></h4>
+      </li>
+    {% endfor %}
+  </ul>
+
+</section>
