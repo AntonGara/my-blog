@@ -1,23 +1,20 @@
-# Everything you need to know about configuring the CMS can be found here:-
-# https://www.netlifycms.org/docs/configuration-options/
-
 backend:
-  name: git-gateway # Netlify’s Git Gateway connects to Git provider’s API
-  branch: master # Branch to update (master by default)
+  name: git-gateway
+  branch: master
 
-media_folder: "assets/img/uploads" # Folder where user uploaded files should go
+media_folder: "assets/img/uploads"
 
-publish_mode: editorial_workflow # Enable drafts
+publish_mode: editorial_workflow
 
-collections: # A list of collections the CMS should be able to edit
+collections:
   # POSTS
-  - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Post" # Used in the UI, ie.: "New Post"
-    folder: "_posts" # The path to the folder where the documents are stored
-    sort: "date:desc" # Default is title:asc
-    create: true # Allow users to create new documents in this collection
+  - name: "post"
+    label: "Post"
+    folder: "_posts"
+    sort: "date:desc"
+    create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields: # The fields each document in this collection have
+    fields:
       - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
       - {label: "Title", name: "title", widget: "string", tagname: "h1"}
       - label: "Author"
@@ -31,17 +28,17 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Body", name: "body", widget: "markdown", required: false}
       - {label: "Categories", name: "categories", widget: "string", required: false}
   # Services
-  - name: "service" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Service" # Used in the UI, ie.: "New Post"
-    folder: "_services" # The path to the folder where the documents are stored
-    sort: "title:asc" # Default is title:asc
-    create: true # Allow users to create new documents in this collection
+  - name: "service"
+    label: "Service"
+    folder: "_services"
+    sort: "title:asc"
+    create: true
     slug: "{{slug}}"
-    fields: # The fields each document in this collection have
-      - {label: "Layout", name: "service", widget: "hidden", default: "service"}
+    fields:
       - {label: "Title", name: "title", widget: "string", tagname: "h1"}
       - {label: "Intro Paragraph", name: "intro_paragraph", widget: "markdown", required: false}
       - {label: "Body", name: "body", widget: "markdown", required: false}
+      - {label: "Image", name: "image", widget: "image", required: false}
     # PAGES
   - name: "page"
     label: "Page"
